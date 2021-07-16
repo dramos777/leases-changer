@@ -32,11 +32,11 @@ Neste exemplo o script exibirá o resultado das alterações na tela.
 Neste segundo exemplo o script irá gerar o arquivo arquivo-destino.txt com o
 campo MAC e DESCRIÇÃO em Caixa Alta no diretório corrente.
 
-### Histórico:
+### Histórico
 
 v1.0 16/07/2021, Emanuel Dramos:
 - Criação da estrutura inicial do script
 
 ### Autor e mantenedor
 Emanuel Dramos
-- **Github:** [https://github.com/dramos777/leases-changer]
+- **Github:** https://github.com/dramos777/leases-changer
