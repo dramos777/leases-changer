@@ -37,7 +37,6 @@ campo MAC e DESCRIÇÃO em Caixa Alta no diretório corrente.
 v1.0 16/07/2021, Emanuel Dramos:
 - Criação da estrutura inicial do script
 
-###Autor
+### Autor e mantenedor
 Emanuel Dramos
-- [Github:][https://github.com/dramos777/leases-changer]
-- [Manutenção:] Dramos
+- **Github:** [https://github.com/dramos777/leases-changer]
