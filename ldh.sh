@@ -33,6 +33,9 @@ LDH_HELP="
     -T Traduz MAC e Descrição de [a-z] para [A-Z]
     -v Exibe a versão
 
+    Ex:
+      ./ldh.sh -c arq-origem.txt -o -T arq-destino.txt
+
 ##################################################################
 "
 # ------------------------------- EXECUÇÃO ----------------------------------------- #
