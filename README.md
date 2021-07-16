@@ -1,10 +1,6 @@
 # leases-changer
 Organizador de Leases DHCP para aplicação em RouterOS Mikrotik
- Github:     https://github.com/dramos777/leases-changer
- Autor:      Emanuel Dramos
- Manutenção: Dramos
-
-    Inicialmente criado para gerar um script com uma lista de leases DHCP a ser
+Inicialmente criado para gerar um script com uma lista de leases DHCP a ser
 aplicada no RouterOS Mikrotik.
 
 ### Testado em:
@@ -41,3 +37,8 @@ campo MAC e DESCRIÇÃO em Caixa Alta no diretório corrente.
 
     v1.0 16/07/2021, Emanuel Dramos:
        - Criação da estrutura inicial do script
+
+###Autor
+Emanuel Dramos
+- [Github:][https://github.com/dramos777/leases-changer]
+- [Manutenção:] Dramos
