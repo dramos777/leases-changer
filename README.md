@@ -17,10 +17,10 @@ de origem tenha a seguinte estrutura:
 11:11:11:11:11:11 192.168.0.13 DISPOSITIVO2 dhcp-server
 22:22:22:22:22:22 192.168.0.14 DISPOSITIVO3 dhcp-server
 ```
-Coluna 1 = Endereço MAC
-Coluna 2 = Endereço IP
-Coluna 3 = Descrição do dispositivo
-Coluna 4 = Nome do servidor dhcp
+- Coluna 1 = Endereço MAC
+- Coluna 2 = Endereço IP
+- Coluna 3 = Descrição do dispositivo
+- Coluna 4 = Nome do servidor dhcp
 ### Exemplos
 
 ```
