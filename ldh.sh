@@ -16,8 +16,15 @@
 # LDH_FILEOUT=0
 # LDH_SORT=0
 # LDH_TR=0
+
+ALERT_ARQ=$(echo "ALERTA! Por segurança, o arquivo de destino não deve existir! Ecolha um nome diferente." && exit 0)
+
+LDH_FILEIN=$(sed -n '1,$p' "$2" | awk -F " " '{print $1 "@" $2 "@" $3 "@" $4}')
+
 VERSION="v1.0"
+
 LDH_CMD="/ip dhcp-server lease add address=ipaddress comment=description mac-address=macaddress server=dhserver"
+
 LDH_HELP="
 
 ##################################################################
@@ -43,15 +50,13 @@ LDH_HELP="
 #########ldh -c arquivo-origem
 if [ "$1" = "-c" ] && [ -f "$2" ] && [ -z "$3" ]; then
 
-   a=$(sed -n '1,$p' "$2" | awk -F " " '{print $1 "@" $2 "@" $3 "@" $4}')
-
-  for d in $a
+  for d in $LDH_FILEIN
     do
       echo "$LDH_CMD" | \
       sed "s/ipaddress/$d/g; s/description/$d/g; s/macaddress/$d/g; s/dhserver/$d/g" | \
       sed "s/=/@/g" | sed "s/@/=/g" | \
       awk -F "=" '{print $1 "=" $3 " " $5 "=" $8 " " $9 "=" $10}' | \
-      awk -F " " '{print $1 " " $2 " " $3 " " $4 " "$5 " " $7 " " $9}' \
+      awk -F " " '{print $1 " " $2 " " $3 " " $4 " "$5 " " $7 " " $9}'
 
     done
     exit 0
@@ -65,15 +70,15 @@ fi
 #########ldh -c arquivo-origem -o -T arquivo-destino (se arquivo-destino existir cancela)
 if [ "$1" = "-c" ] && [ -f "$2" ] && [ "$3" = "-o" ] && [ "$4" = "-T" ] && \
    [ -n "$5" ] && [ -f "$5" ]; then
-  echo "ALERTA - Destino inválido. Já existe um arquivo "$5"! Ecolha um nome diferente." && exit 0
+  echo $ALERT_ARQ && exit 0
 fi
 
 #########ldh -c arquivo-origem -o -T arquivo-destino
 if [ "$1" = "-c" ] && [ -f "$2" ] && [ "$3" = "-o" ] && [ "$4" = "-T" ] && [ -n "$5" ] && \
    [ ! -f "$5" ]; then
-  a=$(sed -n '1,$p' "$2" | awk -F " " '{print $1 "@" $2 "@" $3 "@" $4}' | tr [a-z] [A-Z])
+  #a=$(sed -n '1,$p' "$2" | awk -F " " '{print $1 "@" $2 "@" $3 "@" $4}' | tr [a-z] [A-Z])
 
- for d in $a
+ for d in $(echo "$LDH_FILEIN"  | tr [a-z] [A-Z])
    do
      echo "$LDH_CMD" | \
      sed "s/ipaddress/$d/g; s/description/$d/g; s/macaddress/$d/g; s/dhserver/$d/g" | \
@@ -88,15 +93,14 @@ fi
 #########ldh -c arquivo-origem -o -t arquivo-destino (se arquivo-destino existir cancela)
 if [ "$1" = "-c" ] && [ -f "$2" ] && [ "$3" = "-o" ] && [ "$4" = "-t" ] && \
    [ -n "$5" ] && [ -f "$5" ]; then
-  echo "ALERTA - Destino inválido. Já existe um arquivo "$5"! Ecolha um nome diferente." && exit 0
+  echo $ALERT_ARQ && exit 0
 fi
 
 #########ldh -c arquivo-origem -o -t arquivo-destino
 if [ "$1" = "-c" ] && [ -f "$2" ] && [ "$3" = "-o" ] && [ "$4" = "-t" ] && [ -n "$5" ] && \
    [ ! -f "$5" ]; then
-  a=$(sed -n '1,$p' "$2" | awk -F " " '{print $1 "@" $2 "@" $3 "@" $4}' | tr [A-Z] [a-z])
 
- for d in $a
+ for d in $a $(echo "$LDH_FILEIN"  | tr [A-Z] [a-z])
    do
      echo "$LDH_CMD" | \
      sed "s/ipaddress/$d/g; s/description/$d/g; s/macaddress/$d/g; s/dhserver/$d/g" | \
@@ -111,15 +115,14 @@ fi
 #########ldh -c arquivo-origem -o -S arquivo-destino (se arquivo-destino existir cancela)
 if [ "$1" = "-c" ] && [ -f "$2" ] && [ "$3" = "-o" ] && [ "$4" = "-S" ] && \
    [ -f "$5" ]; then
-  echo "ALERTA - Destino inválido. Já existe um arquivo "$5"! Ecolha um nome diferente." && exit 0
+  echo $ALERT_ARQ && exit 0
 fi
 
 #########ldh -c arquivo-origem -o -S arquivo-destino
 if [ "$1" = "-c" ] && [ -f "$2" ] && [ "$3" = "-o" ] && [ "$4" = "-S" ] && \
    [ -n "$5" ] && [ ! -f "$5" ]; then
-  a=$(sed -n '1,$p' "$2" | awk -F " " '{print $1 "@" $2 "@" $3 "@" $4}')
 
- for d in $a
+ for d in $LDH_FILEIN
    do
      echo "$LDH_CMD" | \
      sed "s/ipaddress/$d/g; s/description/$d/g; s/macaddress/$d/g; s/dhserver/$d/g" | \
@@ -136,15 +139,14 @@ fi
 #########ldh -c arquivo-origem -o -s arquivo-destino (se arquivo-destino existir cancela)
 if [ "$1" = "-c" ] && [ -f "$2" ] && [ "$3" = "-o" ] && [ "$4" = "-s" ] && \
    [ -f "$5" ]; then
-  echo "ALERTA - Destino inválido. Já existe um arquivo "$5"! Ecolha um nome diferente." && exit 0
+  echo $ALERT_ARQ && exit 0
 fi
 
 #########ldh -c arquivo-origem -o -s arquivo-destino
 if [ "$1" = "-c" ] && [ -f "$2" ] && [ "$3" = "-o" ] && [ "$4" = "-s" ] && \
    [ -n "$5" ] && [ ! -f "$5" ]; then
-  a=$(sed -n '1,$p' "$2" | awk -F " " '{print $1 "@" $2 "@" $3 "@" $4}')
 
- for d in $a
+ for d in $LDH_FILEIN
    do
      echo "$LDH_CMD" | \
      sed "s/ipaddress/$d/g; s/description/$d/g; s/macaddress/$d/g; s/dhserver/$d/g" | \
@@ -160,15 +162,14 @@ fi
 
 #########ldh -c arquivo-origem -o arquivo-destino (se arquivo-destino existir cancela)
 if [ "$1" = "-c" ] && [ -f "$2" ] && [ "$3" = "-o" ] && [ -n "$4" ] && [ -f "$4" ]; then
-  echo "ALERTA - Destino inválido. Já existe um arquivo "$4"! Ecolha um nome diferente." && exit 0
+  echo $ALERT_ARQ && exit 0
 fi
 
 #########ldh -c arquivo-origem -o arquivo-destino
 if [ "$1" = "-c" ] && [ -f "$2" ] && [ "$3" = "-o" ] && [ -n "$4" ] && \
    [ ! -f "$4" ]; then
-  a=$(sed -n '1,$p' "$2" | awk -F " " '{print $1 "@" $2 "@" $3 "@" $4}')
 
- for d in $a
+ for d in $LDH_FILEIN
    do
      echo "$LDH_CMD" | \
      sed "s/ipaddress/$d/g; s/description/$d/g; s/macaddress/$d/g; s/dhserver/$d/g" | \
@@ -186,9 +187,4 @@ if [ "$1" = -v ]; then
 fi
 
 #########Nenhuma opção válida
-echo "
-################################
-Versão: $VERSION
-Utilize a opção -h para ajuda.
-################################
-"
+echo "Opção inválida. Use a opção -h para ajuda."
