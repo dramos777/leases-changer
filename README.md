@@ -1,14 +1,13 @@
 # leases-changer
-Organizador de Leases DHCP para aplicação em RouterOS Mikrotik
 Inicialmente criado para gerar um script com uma lista de leases DHCP a ser
 aplicada no RouterOS Mikrotik.
 
 ### Testado em:
-    BASH versão 5.0.3
+BASH versão 5.0.3
 
 ### Forma de usar
 
-    Para a correta utilização do programa é necessário que o conteúdo do arquivo
+Para a correta utilização do programa é necessário que o conteúdo do arquivo
 de origem tenha a seguinte estrutura:
 
 ```
@@ -26,17 +25,17 @@ git clone https://github.com/dramos777/leases-change.git
 cd leases-change
 ./ldh.sh -c ~/arquivo-origem.txt
 ```
-    Neste exemplo o script exibirá o resultado das alterações na tela.
+Neste exemplo o script exibirá o resultado das alterações na tela.
 ```
 ./ldh.sh -c ~/arquivo-origem.txt -o -T arquivo-destino.txt
 ```
-    Neste segundo exemplo o script irá gerar o arquivo arquivo-destino.txt com o
+Neste segundo exemplo o script irá gerar o arquivo arquivo-destino.txt com o
 campo MAC e DESCRIÇÃO em Caixa Alta no diretório corrente.
 
 ### Histórico:
 
-    v1.0 16/07/2021, Emanuel Dramos:
-       - Criação da estrutura inicial do script
+v1.0 16/07/2021, Emanuel Dramos:
+- Criação da estrutura inicial do script
 
 ###Autor
 Emanuel Dramos
