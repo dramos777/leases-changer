@@ -2,7 +2,7 @@
 Inicialmente criado para gerar um script com uma lista de leases DHCP a ser
 aplicada no RouterOS Mikrotik.
 
-### Testado em:
+### Testado em
 BASH versão 5.0.3
 
 ### Forma de usar
@@ -11,12 +11,16 @@ Para a correta utilização do programa é necessário que o conteúdo do arquiv
 de origem tenha a seguinte estrutura:
 
 ```
-58:10:8c:00:00:00 192.168.0.10 DESCRICAO_1 dhcp-adm
-58:10:8c:00:00:00 192.168.0.11 SETOR_NOME_1_NOME_2 dhcp-adm
-00:00:00:00:00:00#192.168.0.12#DISPOSITIVO1
-11:11:11:11:11:11#192.168.0.13#DISPOSITIVO2
-22:22:22:22:22:22#192.168.0.14#DISPOSITIVO3
+58:10:8c:00:00:00 192.168.0.10 DESCRICAO_1 dhcp-server
+58:10:8c:00:00:00 192.168.0.11 SETOR_NOME_1_NOME_2 dhcp-server
+00:00:00:00:00:00 192.168.0.12 DISPOSITIVO1 dhcp-server
+11:11:11:11:11:11 192.168.0.13 DISPOSITIVO2 dhcp-server
+22:22:22:22:22:22 192.168.0.14 DISPOSITIVO3 dhcp-server
 ```
+Coluna 1 = Endereço MAC
+Coluna 2 = Endereço IP
+Coluna 3 = Descrição do dispositivo
+Coluna 4 = Nome do servidor dhcp
 ### Exemplos
 
 ```
@@ -39,4 +43,4 @@ v1.0 16/07/2021, Emanuel Dramos:
 
 ### Autor e mantenedor
 Emanuel Dramos
-- **Github:** https://github.com/dramos777/leases-changer
+- **Github:** https://github.com/dramos777
