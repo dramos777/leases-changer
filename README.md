@@ -12,10 +12,10 @@ de origem tenha a seguinte estrutura:
 
 ```
 58:10:8c:00:00:00 192.168.0.10 DESCRICAO_1 dhcp-server
-58:10:8c:00:00:00 192.168.0.11 SETOR_NOME_1_NOME_2 dhcp-server
-00:00:00:00:00:00 192.168.0.12 DISPOSITIVO1 dhcp-server
-11:11:11:11:11:11 192.168.0.13 DISPOSITIVO2 dhcp-server
-22:22:22:22:22:22 192.168.0.14 DISPOSITIVO3 dhcp-server
+58:10:8c:00:00:00 192.168.0.11 DESCRICAO_2 dhcp-server
+00:00:00:00:00:00 192.168.0.12 DESCRICAO_3 dhcp-server
+11:11:11:11:11:11 192.168.0.13 DESCRICAO_4 dhcp-server
+22:22:22:22:22:22 192.168.0.14 DESCRICAO_5 dhcp-server
 ```
 - Coluna 1 = Endereço MAC
 - Coluna 2 = Endereço IP
